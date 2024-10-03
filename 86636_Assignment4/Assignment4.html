@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        h2{
+            text-align: center;
+        }
+        #inner-container{
+            background-color:antiquewhite;
+            width: 25%;
+            height: 160px;
+            margin-left: 37.5%;
+            padding-top: 2%;
+            border-radius: 20px;
+        }
+        b{
+            margin-left: 11%;
+        }
+        #buttons{
+            margin-left: 11%;
+            width: 78%;
+            display: flex;
+            justify-content: space-between;
+        }
+        button{
+            color: white;
+            background-color:cornflowerblue;
+            border: none;
+            border-radius: 10px;
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2 >Calculator</h2>
+        <div id="inner-container">
+            <b>First Number </b>
+            <input type="number" id="first" style="margin-left: 30px;">
+            <br>
+            <br>
+            <b>Second Number </b>
+            <input type="number" id="second" style="margin-left: 15px;">
+            <br>
+            <br>
+            <b>Result  </b>
+            <input type="number" id="result" style="margin-left: 80px;">
+            <br>
+            <br>
+            <div id="buttons">
+                <button id="sum" onclick="sum()">Addition</button>
+                <button id="sub" onclick="sub()">Substract</button>
+                <button id="mul" onclick="mul()">Multiply</button>
+                <button id="div" onclick="div()">Division</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function sum(){
+            var ref_first=document.getElementById("first").value;
+            ref_first=parseInt(ref_first);
+            var ref_second=document.getElementById("second").value;
+            ref_second=parseInt(ref_second);
+            document.getElementById("result").value=ref_first+ref_second;
+        }
+        function sub(){
+             var ref_first=document.getElementById("first").value;
+            ref_first=parseInt(ref_first);
+            var ref_second=document.getElementById("second").value;
+            ref_second=parseInt(ref_second);
+            document.getElementById("result").value=ref_first-ref_second;
+        }
+        function mul(){
+             var ref_first=document.getElementById("first").value;
+            ref_first=parseInt(ref_first);
+            var ref_second=document.getElementById("second").value;
+            ref_second=parseInt(ref_second);
+            document.getElementById("result").value=ref_first*ref_second;
+        }
+        function div(){
+             var ref_first=document.getElementById("first").value;
+            ref_first=parseInt(ref_first);
+            var ref_second=document.getElementById("second").value;
+            ref_second=parseInt(ref_second);
+            document.getElementById("result").value=ref_first/ref_second;
+        }
+    </script>
+</body>
+</html>

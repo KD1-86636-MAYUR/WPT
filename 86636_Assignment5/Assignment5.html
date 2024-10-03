@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment</title>
+    <style>
+        body{
+           background-image: url('urnq_10cj_230811.jpg');
+           background-repeat: no-repeat;
+           background-attachment: fixed;
+           background-size: 100% 100%;
+        }
+        #container{
+            position: absolute;
+        }
+        img{
+            position: relative;
+            top: 388px;
+        }
+        #buttons{
+            position: relative;
+            margin-left: 1250px;
+            top: 230px;
+        }
+        button{
+            color: white;
+            background-color:darkslategray;
+            border: 2px solid white;
+            height: 50px;
+            width: 100px;
+            border-radius: 10px;
+            font-size: larger;
+            margin: 8px;
+        }
+        b{
+            color: white;
+        }
+        #axis{
+            position: relative;
+            margin-left: 1320px;
+            bottom: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img id="car" src="car.png" width="300px">
+        <div id="axis">
+            <b >X-axis :</b>
+            <input id="xaxis" type="number" name="xaxis">
+            <br>
+            <br>
+            <b>Y-axis :</b>
+            <input id="yaxis" type="number" name="yaxis">
+        </div>
+        <div id="buttons">
+            <button id="start" onclick="startCar()">Start</button>
+            <button id="restart" onclick="Restart()">Restart</button>
+        </div>
+    </div>
+    <script>
+        var counter=0;
+        var count=parseInt(document.getElementById("car").style.top) || 388;
+
+        function startCar()
+        {
+             setInterval(moveCar,10);
+        }
+        function Restart(){
+            location.reload();
+        }
+        function moveCar(){
+            counter=counter+1;
+             if(counter<=860)
+             {
+                document.getElementById("car").style.marginLeft=counter + "px" ;
+                document.getElementById("xaxis").value=counter;
+             }else
+             {
+                count=count+1;
+                document.getElementById("car").style.top=count+"px";
+                document.getElementById("yaxis").value=count;
+             }
+        }
+    </script>
+</body>
+</html>
