@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .error { color: red; font-size: 14px; }
+    </style>
+</head>
+<body>
+<center>
+    <form id="registrationForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <div id="usernameError" class="error"></div><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <div id="emailError" class="error"></div><br>
+
+        <label for="confirm_email">Confirm Email:</label>
+        <input type="email" id="confirm_email" name="confirm_email">
+        <div id="confirmEmailError" class="error"></div><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <div id="passwordError" class="error"></div><br>
+
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password">
+        <div id="confirmPasswordError" class="error"></div><br>
+
+        <input type="submit" value="Register">
+    </form>
+
+    <div id="formSuccess" style="color: green;"></div>
+
+    <script>
+        $(document).ready(function() {
+            // Simple form validation
+            $("#registrationForm").submit(function(event) {
+                event.preventDefault(); // Prevent form submission
+
+                // Clear previous error messages
+                $(".error").html("");
+                $("#formSuccess").html("");
+
+                var isValid = true; // Assume form is valid at first
+                var username = $("#username").val();
+                var email = $("#email").val();
+                var confirmEmail = $("#confirm_email").val();
+                var password = $("#password").val();
+                var confirmPassword = $("#confirm_password").val();
+
+                // Username validation
+                if (username === "") {
+                    $("#usernameError").html("Username is required.");
+                    isValid = false;
+                }
+
+                // Email validation
+                if (email === "") {
+                    $("#emailError").html("Email is required.");
+                    isValid = false;
+                } else if (!validateEmail(email)) {
+                    $("#emailError").html("Please enter a valid email.");
+                    isValid = false;
+                }
+
+                // Confirm Email validation
+                if (confirmEmail === "") {
+                    $("#confirmEmailError").html("Confirm email is required.");
+                    isValid = false;
+                } else if (email !== confirmEmail) {
+                    $("#confirmEmailError").html("Emails do not match.");
+                    isValid = false;
+                }
+
+                // Password validation
+                if (password === "") {
+                    $("#passwordError").html("Password is required.");
+                    isValid = false;
+                }
+
+                // Confirm Password validation
+                if (confirmPassword === "") {
+                    $("#confirmPasswordError").html("Confirm password is required.");
+                    isValid = false;
+                } else if (password !== confirmPassword) {
+                    $("#confirmPasswordError").html("Passwords do not match.");
+                    isValid = false;
+                }
+
+                // If the form is valid, show success message
+                if (isValid) {
+                    $("#formSuccess").html("Registration successful!");
+                    // Here you can proceed to submit the form or process the data
+                    // Example: $(this).unbind('submit').submit(); // Submit the form if all validations pass
+                }
+            });
+
+            // Email validation function
+            function validateEmail(email) {
+              //  var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+                return emailPattern.test(email);
+            }
+        });
+    </script>
+</center>
+</body>
+</html>
